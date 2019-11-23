@@ -1,0 +1,8 @@
+{
+  "name": "dirt_chest",
+  "model_type": "chest",
+  "model": "customchests:block/chest",
+  "texture": "customchests:block/dirt_chest",
+  "slot_x": 5,
+  "slot_y": 1
+}
