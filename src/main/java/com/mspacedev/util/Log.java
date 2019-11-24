@@ -7,6 +7,11 @@ public class Log
 {
 	private static final Logger LOGGER = LogManager.getLogger();
 
+	public static void info(String info)
+	{
+		LOGGER.info(info);
+	}
+
 	public static void debug(String debug)
 	{
 		LOGGER.debug(debug);

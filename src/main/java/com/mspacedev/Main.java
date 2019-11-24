@@ -8,8 +8,12 @@ public class Main
 {
 	public static final String MODID = "customchests";
 
+	public static Main instance;
+
 	public Main()
 	{
 		Log.debug("Hello World from Custom Chests!");
+
+		instance = this;
 	}
 }

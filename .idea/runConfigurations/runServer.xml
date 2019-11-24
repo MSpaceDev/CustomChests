@@ -2,9 +2,9 @@
   <configuration default="false" name="runServer" type="Application" factoryName="Application" singleton="false">
     <envs>
       <env name="MOD_CLASSES" value="customchests%%E:\Repositories\CustomChests\build\resources\main;customchests%%E:\Repositories\CustomChests\build\classes\java\main" />
-      <env name="MCP_MAPPINGS" value="snapshot_20191121-1.14.3" />
+      <env name="MCP_MAPPINGS" value="snapshot_20191123-1.14.3" />
       <env name="MCP_VERSION" value="20190829.143755" />
-      <env name="FORGE_VERSION" value="28.1.90" />
+      <env name="FORGE_VERSION" value="28.1.93" />
       <env name="FORGE_GROUP" value="net.minecraftforge" />
       <env name="target" value="fmluserdevserver" />
       <env name="MC_VERSION" value="1.14.4" />

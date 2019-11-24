@@ -1,7 +1,7 @@
 {
   "name": "wooden_chest",
   "model_type": "chest",
-  "model": "customchests:block/chest",
+  "model": "customchests:block/wooden_chest",
   "texture": "customchests:block/wooden_chest",
   "slot_x": 9,
   "slot_y": 3

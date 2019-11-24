@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import com.mspacedev.block.CustomChest;
 import com.mspacedev.itemgroup.ModItemGroups;
 import com.mspacedev.util.Data;
+import com.mspacedev.util.Log;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -16,6 +17,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import javax.annotation.Nonnull;
+import java.util.ArrayList;
 
 @Mod.EventBusSubscriber(modid = Main.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModEventSubscriber
@@ -25,10 +27,18 @@ public class ModEventSubscriber
 	{
 		IForgeRegistry<Block> registry = event.getRegistry();
 
-		for (CustomChest.Properties properties : Data.Chests.getChestProperties())
+		ArrayList<CustomChest.Properties> customChestProperties = Data.Chests.getChestProperties();
+		if (!customChestProperties.isEmpty())
 		{
-			properties.toString();
-			registry.register(new CustomChest(Block.Properties.create(Material.WOOD).hardnessAndResistance(1.0f, 1.0f).sound(SoundType.WOOD), properties));
+			for (CustomChest.Properties properties : customChestProperties)
+			{
+				Log.debug(properties.toString());
+				registry.register(new CustomChest(Block.Properties.create(Material.WOOD).hardnessAndResistance(1.0f, 1.0f).sound(SoundType.WOOD), properties));
+			}
+		}
+		else
+		{
+			Log.error("Critical error while loading custom blocks. No blocks were loaded during initialization!");
 		}
 	}
 

@@ -13,26 +13,16 @@ public class Data
 		{
 			ArrayList<CustomChest.Properties> chestProperties = new ArrayList<>();
 
-			if (!FileManager.chestFiles.isEmpty())
+			if (!FileManager.CHEST_FILES.isEmpty())
 			{
-				for (File jsonFile : FileManager.chestFiles)
+				for (File file : FileManager.CHEST_FILES)
 				{
-					CustomChest.Properties chestProperty = FileManager.convertJSONFileToObject(jsonFile, CustomChest.Properties.class);
-
-					if (chestProperty != null)
-					{
-						chestProperties.add(chestProperty);
-					}
-					else
-					{
-						ArrayList<CustomChest.Properties> defaultProperties = getDefaultProperties();
-
-						if (defaultProperties != null)
-							return defaultProperties;
-						else
-							Log.error("Critical error loading mod! No blocks have been able to load!");
-					}
+					chestProperties.add(FileManager.convertJSONFileToObject(file, CustomChest.Properties.class));
 				}
+			}
+			else
+			{
+				return getDefaultProperties();
 			}
 
 			return chestProperties;
@@ -42,6 +32,8 @@ public class Data
 		{
 			ArrayList<CustomChest.Properties> defaultChestProperties = new ArrayList<>();
 
+			ArrayList<File> localChestFiles = FileManager.LOCAL_CHEST_FILES;
+
 			if (!FileManager.LOCAL_CHEST_FILES.isEmpty())
 			{
 				for (File jsonFile : FileManager.LOCAL_CHEST_FILES)
@@ -49,7 +41,10 @@ public class Data
 					CustomChest.Properties chestProperty = FileManager.convertJSONFileToObject(jsonFile, CustomChest.Properties.class);
 
 					if (chestProperty != null)
+					{
+						FileManager.writeJSONObjectToFile(chestProperty, CustomChest.Properties.class, chestProperty.getName(), FileManager.REL_CHESTS_PATH);
 						defaultChestProperties.add(chestProperty);
+					}
 				}
 			}
 
